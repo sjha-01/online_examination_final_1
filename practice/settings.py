@@ -105,8 +105,7 @@ DATABASES = {
         'PORT': '',
     }
 }
-# sjha-01
-# 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
+
 
 # DATABASES = {
 #     "default": {
