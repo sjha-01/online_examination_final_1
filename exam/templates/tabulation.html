@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Results</h2>
+    <table border=3>
+      <tr>
+        <th>Roll</th>
+        <th>Name</th>
+        <th>OM</th>
+        <th>Modified OM</th>
+        <th>Grade</th>
+      </tr>
+      {% for x in marks %}
+      <tr>
+        <td>{{x.student.roll}}</td>
+        <td>{{x.student.name}}</td>
+        <td>{{x.om}}</td>
+        <td>{{x.modified_om}}</td>
+        <td>{{x.grade}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

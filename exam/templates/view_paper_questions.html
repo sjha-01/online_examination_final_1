@@ -1,0 +1,538 @@
+ {%load static%}
+{% static 'images' as baseUrl %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <title>Paper & Questions</title>
+   </head>
+
+
+  <style>
+      body { 
+        align-content:center;  
+        background-color: #fff3e6;   
+        height: 70vh;/*text-align:center;*/
+        <!-- background-image: url({%static 'images/Untitled.png'%});
+        background-size:cover; -->
+        } 
+        
+  </style>
+
+  
+  
+  
+  
+  
+  
+  <!--Navigation Bar-->
+  <style>
+    .navbar/*navigation bar*/
+  {
+     
+
+  }
+  .c
+    {
+      color:#ffcc80;
+      transition: 0.15s;
+
+    }
+    .c:hover
+    {
+      color:#fcdcb9;
+      transition: 0.15s;
+      text-shadow: 2px 0px 2px rgb(180, 114, 59);
+    }
+    .dropdown-menu
+      {
+        background-color:#fff3e6 ;
+      }
+      .dropdown-item
+      {
+        font-weight: 500;
+        color:#793702;
+
+      }
+      .dropdown-item:hover
+      {
+        background-color:#ffcc80;
+        transition: 0.15s;
+      }
+      .button-1
+  {
+    background-color:#fff3e6;
+    color:white;
+     transition:0.15s;
+     border-radius: 50%;
+     padding:20px; 
+  }
+  .button-1:hover
+  {
+    background-color:#ffbf5f;
+    transition:0.15s;
+  }
+  h1, h4 {
+    font-size:40px;
+    font-weight:bold;
+    color:rgb(255, 255, 255);
+    text-shadow: 4px 0px 5px rgb(11, 13, 112);
+    letter-spacing: 4px;
+}
+      .dropdown-menu
+      {
+        transition: 0.5s;
+      }
+      .dropdown-menu:active
+      {
+        transition: 0.5s;
+      }
+      .dropdown-menu {
+    padding: 0px;
+    border:1px solid grey;
+}
+  </style>
+
+
+  <nav class="navbar  navbar-expand-lg navbar-light fixed-top" style="background-color: #793702;">
+  <a class="navbar-brand pl-5"  style="color: #ffcc80;"><h4>Extranet</h4></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+   <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link pl-4"  href="{% url 'teacher_dashboard' %}" ><div class=c><h5>Home</h5></div></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link pl-4"  href="{% url 'papers_and_questions' %}"><div class=c><h5>Question papers</h5></div></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link pl-4"  href="{% url 'marks_for_teacher' %}" ><div class=c><h5>Student marks</h5></div></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link pl-4"  href="{% url 'unlock_papers_and_marks' %}"><div class=c><h5>Unlock paper / Publish Marks</div> </a>
+      </li>
+    </ul>
+    
+  </div>
+  <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" STYLE="color:#793702;"><img src="{%static 'images/account1.png'%}" style="height: 50px;"></a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+        <h5 class="dropdown-header" style="color:#fff3e6; background-color: #793702;  padding: 20px 50px; font-weight: bold;  "><img src="{%static 'images/account1.png'%}" style="height: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;{{request.user.teacher.name}}</h5>
+        <a class="dropdown-item" href="{% url 'change_password' %}">Change password</a>
+        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a></div></button>
+    </li>
+  </ul> 
+</nav>
+</div>
+
+
+
+<!--question details-->
+<style>
+
+    /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:transparent;
+  opacity:0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:#ffbf5f;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.b1
+{
+  color:#fff3e6;
+  background-color: #793702;
+}
+.b1:hover
+{
+  background-color: #ffbf5f;
+}
+
+.table-questions
+{
+  border:3px solid brown
+}
+table.table-questions  > tbody > tr
+        {
+          border:2px solid brown;
+
+        }
+</style>
+
+  <div class="block" style=" background-image: url(Untitled.png); margin-top: 80px;">
+    <div class="row ml-0 mr-0">
+      <div class="col-9" style="height:100vh; border-left:5px solid #793702; overflow: auto; ">
+      <div class="row">
+          <div class="col-md-12 text-right p-2">
+            <a href="{% url 'create_question' paper.id %}"><button type="button" class="btn btn- b1 ">New question +</button></a>
+          </div>
+        </div>
+        <div class=row >
+          <div class="col-md-12 p-4">
+            <p style="color:#793702; font-weight:bold; font-family:Modern No. 20; font-size: 30px;   text-decoration: underline;">Questions</p>
+            <!--{%load static%} {% static 'qstns' as baseUrl %}-->
+              <div id="Question1111">
+                <!--<table class="table table-questions m-auto">
+                 {% for x in ques1 %}
+                    <tr class="d-flex">
+                      <td class="col-10"><a href="#" style="color:#793702; font-weight:bold; font-family:Modern No. 20; text-decoration:none;" ><p class="Question">{{x.desc}0}</p></a></td>
+                    <td class="col-2 text-right"><a class="nasd" href="#" data-target="#view" data-toggle="modal"> <button type="button" class="btn b1">View</button></a></div>
+                    td class="col-2 text-right"<a class="nasd" href="#" data-target="#delete_question" data-toggle="modal"> <button type="button" class="btn btn-danger">Delete</button></a></div></td
+                  </tr>
+                {% endfor %}
+                </table>-->
+             </div>
+          </div>
+
+
+        </div>
+        </div>
+
+
+
+        <!--modal to edit questions-->
+        <style>
+          .fade2
+            {
+              transform: scale(0);
+              opacity: 0;
+              transition: all 0.15s linear;
+              display: block !important; /*For fading out effect*/
+            }
+            .fade2.show
+            {
+              opacity:1;
+              transform: scale(1);
+            }
+            .m-footer
+            {
+              text-align:center;
+            }
+        </style>
+        <div id="view" class="modal fade2" role="dialog">
+          <div class="modal-dialog modal-dialog-centered modal">
+            <div class="modal-content">
+              <div class="modal-header text-light" STYLE="background-color:#5e2b02">
+                <h5 class="modal-title" id="login">Question</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class=foods1>
+              <div class="modal-body" STYLE="background-color:#fff3e6 color:#793702; font-weight:bold; font-family:Modern No. 20; font-size: 18px;">
+              	<div id="popupques">
+	                <!--<p>
+	                  Desc : {{x.desc}}
+	              </p> <br>
+	              {% if x.img_path %}
+	              <img src="{{q.img_path.url}}" height=300 width=400/><br>
+	              {% endif %}
+	               <ol type="A">
+	                  <li>{{x.op1}}</li> <br>
+	                  <li>{{x.op2}}</li> <br>
+	                  <li>{{x.op3}}</li> <br>
+	                  <li>{{x.op4}}</li> <br>
+	                  </ol>
+	                  Correct Option : {{x.correct_option}} <br>-->
+              </div>
+              </div>
+                <div class=m-footer>
+              <div class="modal-footer" STYLE="background-color:#5e2b02">
+                <div class="col"><div id="update"> <a href="#"><button class="button" class="btn btn-warning">Update</button></a>	</div></div>
+                </div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+
+        <!--Modal to delete questions-->
+        <style>
+          .fade2
+            {
+              transform: scale(0);
+              opacity: 0;
+              transition: all 0.15s linear;
+              display: block !important; /*For fading out effect*/
+            }
+            .fade2.show
+            {
+              opacity:1;
+              transform: scale(1);
+            }
+            .m-footer
+            {
+              text-align:center;
+            }
+        </style>
+        <div id="delete_question" class="modal fade2" role="dialog">
+          <div class="modal-dialog modal-dialog-centered modal">
+            <div class="modal-content">
+              <div class="modal-header text-light" STYLE="background-color:#5e2b02">
+                <h5 class="modal-title" id="login">Deleting</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class=foods1>
+              <div class="modal-body" STYLE="background-color:#fff3e6">
+              	<br>
+                    Are you sure you want to delete this question?
+                    <br></br>
+              </div>
+              <div class="modal-footer" STYLE="background-color:#5e2b02">
+                  <div id="deletequestion">
+                <!--<form method="POST" action="{% url 'delete_question' 10 %}">
+                    {% csrf_token %}
+                <div class="col"><input  type="submit" class="btn btn-success" value="Yes"></div>
+                <div class="col"><button type="button" class="btn btn-danger" data-dismiss="modal">No</button></div>
+
+                </form>-->
+                  </div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--paper details-->
+        <div class="col-3" style="height:100vh; text-align: center; border-left:5px solid #793702; border-right:5px solid #793702; overflow: auto;">
+          <div class=a style="color:#793702; font-weight:bold; font-family:Modern No. 20; text-align:center; font-size: 30px;">Paper Details</div>
+          <br><br><br>
+        <p style="color:#793702; font-weight:bold; font-family:Modern No. 20; text-align:center; font-size: 18px;">
+          Code : {{paper.code}} <br>
+         Name : {{paper.name}} <br>
+         Number of Questions : {{paper.count}} <br>
+          Marks per correct question : {{paper.marks_per_cq}} <br>
+            Marks per wrong question : {{paper.marks_per_wq}} <br>
+            Full Marks : {{paper.fm}} <br>
+         Modified Full Marks : {{paper.modified_fm}} <br>
+         Department : {{paper.dept.name}} <br>
+         Paper Setter : {{paper.paper_setter.name}} <br><br>
+         <div class="row">
+          <div class="col"> <a href="{% url 'update_paper' paper.id %}"><button type="button" class="btn btn-none b1">Update</button></a></div>
+          <div class="col"> <a a class="nasd" href="#" data-target="#delete_paper" data-toggle="modal"> <button type="button" class="btn btn-danger">Delete</button></a></div>
+        </div>
+        </p>
+          </ul>
+       </div>
+      </div>
+
+</div>
+
+
+
+</div>
+
+
+<!--Modal to Delete paper-->
+<style>
+
+  .fade2
+    {
+      transform: scale(0);
+      opacity: 0;
+      transition: all 0.15s linear;
+      display: block !important; /*For fading out effect*/
+    }
+    .fade2.show
+    {
+      opacity:1;
+      transform: scale(1);
+    }
+    .m-footer
+    {
+      text-align:center;
+    }
+</style>
+<div id="delete_paper" class="modal fade2" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal">
+    <div class="modal-content">
+      <div class="modal-header text-light" STYLE="background-color:#5e2b02">
+        <h5 class="modal-title" id="login">Deleting</h5>
+        <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class=foods1>
+      <div class="modal-body" STYLE="background-color:#fff3e6">
+           <br>All questions along with the paper will be deleted. Are you sure u want to delete this paper?
+           <br><br>
+      </div>
+      <div class="modal-footer" STYLE="background-color:#5e2b02">
+        <form method="post" action="{% url 'delete_paper' paper.id %}">
+           {% csrf_token %}
+            <div class="row ml-0 mr-0" >
+          <div class="col" ><input  type="submit" class="btn btn-success" value="Yes"></div>
+          <div class="col" ><button type="button" class="btn btn-danger" data-dismiss="modal">No</button></div>
+        </div></form>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!--<body>
+    Paper Details
+    <p>
+        Code : {{paper.code}} <br>
+        Name : {{paper.name}} <br>
+        Number of Questions : {{paper.count}} <br>
+        Marks per correct question : {{paper.marks_per_cq}} <br>
+        Marks per wrong question : {{paper.marks_per_wq}} <br>
+        Full Marks : {{paper.fm}} <br>
+        Modified Full Marks : {{paper.modified_fm}} <br>
+        Department : {{paper.dept.name}} <br>
+        Paper Setter : {{paper.paper_setter.name}} <br>
+        {% if not paper.publish_result %}
+        <a href="{% url 'update_paper' paper.id %}">Update</a></td>
+        {% endif %}
+        
+    <a href="{% url 'delete_paper' paper.id %}">Delete</a></td>
+    </p>
+<br>
+
+        <h2>Questions</h2>
+        {% if not paper.unlock_paper %}
+        <a href="{% url 'create_question' paper.id %}">Create Question</a></td>    
+        {% endif %}
+        <br>
+        <table border="2">
+      {% for x in q %}
+      <tr>
+        <td>
+          <a href="#">{{x.desc}}</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+    
+</body>-->
+
+
+
+
+
+
+
+<!--footer-->
+<style>
+    .b/*footer*/
+    {
+      position:fixed;
+        bottom:0;
+        width:100%;
+        background-color: #793702; color:#fff3e6; 
+    }
+    .footer
+        {
+          width:20%;
+          margin-left:auto;
+        }
+</style>
+<div class="b">
+        <div trademark style="text-align:center;  ">
+          © 2021 ExtraNET.com are registered trademarks of SXC. All rights reserved.
+        </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+        var ques = JSON.parse('{{ q | escapejs }}');
+        var ques1 = JSON.parse(ques);
+        let count = 1;
+        console.log(ques1);
+        var no = Object.keys(ques1).length;
+        console.log(no);
+        var x ='<table class="table table-questions m-auto">';
+        while(count<=no)
+		{
+			x=x+'<tr class="d-flex">'+
+                '<td class="col-8"><a href="#" style="color:#793702; font-weight:bold;  font-family:Modern No. 20; text-decoration:none;" >'+ques1[(count-1)].fields.desc+'</a></td>'+
+                    '<td class="col-2 text-right"><a class="nasd" href="#" data-target="#view" data-toggle="modal"> <button type="button" onclick=showQuestions('+count+'); class="btn b1">View</button></a></td>'+
+                    '<td class="col-2 text-right"--><a class="nasd" href="#" data-target="#delete_question" data-toggle="modal"> <button type="button" onclick=delete_Questions('+count+') class="btn btn-danger">Delete</button></a></td></tr>';
+			count++;
+		}
+		x = x+'</table>';
+		//console.log(document.getElementById("Question1111"));
+		document.getElementById("Question1111").innerHTML=x;
+
+		function showQuestions(no)
+       {
+          var no = Number(no);
+          //console.log(no);
+          var ques = ques1[(no-1)].pk;
+          console.log(ques);
+         var view = '<p> Desc : '+ ques1[(no-1)].fields.desc+'</p> <br>';
+         if((ques1[(no-1)].fields.img_path).length!=0)
+                view+='<img src="/media/'+ques1[(no-1)].fields.img_path+'" height=300 width=500/ alt=" "><br>';
+	          view+='<ol type="A">'+
+	                  '<li>'+ques1[(no-1)].fields.op1+'</li> <br>'+
+	                  '<li>'+ques1[(no-1)].fields.op2+'</li> <br>'+
+	                  '<li>'+ques1[(no-1)].fields.op3+'</li> <br>'+
+	                  '<li>'+ques1[(no-1)].fields.op4+'</li> <br>'+
+	                  '</ol>'+
+	                  'Correct Option :  '+ ques1[(no-1)].fields.correct_option+' <br>'
+
+
+		document.getElementById("popupques").innerHTML=view;
+        var update ="";
+       update = update + '<a href="/update_question/' + ques +'/" style="color:black;"><button type="button" class="btn btn-warning">Update</button></a>'
+       document.getElementById("update").innerHTML=update;
+      }
+
+      function delete_Questions(no)
+       {
+          var no = Number(no);
+          console.log(no);
+          var ques = ques1[(no-1)].pk;
+          console.log(ques);
+         var delete1 = '<form method="POST" action="/delete_question/' + ques + '/">' +
+                    '{% csrf_token %}'+
+                '<div class="row"><div class="col"><input  type="submit" class="btn btn-success" value="Yes"></div>'+
+                '<div class="col"><button type="button" class="btn btn-danger" data-dismiss="modal">No</button></div>'+
+                '</form></div>';
+		document.getElementById("deletequestion").innerHTML=delete1;
+      }
+    </script>
+<!--{% if x.img_path %}
+	              <img src="{{q.img_path.url}}" height=300 width=400/><br>
+	              {% endif %}-->
+
+
+
+
+
+
+</html>
+
+

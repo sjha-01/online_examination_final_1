@@ -1,0 +1,39 @@
+{%load static%} {% static 'qstns' as baseUrl %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Question Details
+    <p>
+        <p>
+            Desc : {{q.desc}}
+        </p> <br>
+        {% if q.img_path %}
+        <img src="{{q.img_path.url}}" height=300 width=400/><br>
+        {% endif %}
+         <ol type="A">
+            <li>{{q.op1}}</li> <br>
+            <li>{{q.op2}}</li> <br>
+            <li>{{q.op3}}</li> <br>
+            <li>{{q.op4}}</li> <br>
+            </ol>
+            Correct Option : {{q.correct_option}} <br>
+
+    {% if not q.paper.publish_result %}
+    {% if not q.paper.unlock_paper %}
+    <a href="{% url 'update_question' q.id %}">Update</a></td>
+    <a href="{% url 'delete_question' q.id %}">Delete</a></td>
+    {% else %}
+    <a href="{% url 'update_question' q.id %}">Update Correct Option</a></td>
+    {% endif %}
+    {% endif %}
+    </p>
+<br>
+
+    
+</body>
+</html>

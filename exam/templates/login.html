@@ -1,0 +1,185 @@
+{%load static%}
+{% static 'images' as baseUrl %}
+
+<!doctype html>
+<title>
+  Login page 2
+</title>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Log In</title>
+  </head>
+  <style>
+      .flex-container
+      {
+        display:flex;
+      }
+      h1, h3 {
+        font-size:60px;
+        background: linear-gradient(rgb(99, 61, 29),white);
+          -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      body{
+       
+            background-image: url({%static 'images/tatga.jpg'%});/*IMAGE GOES HERE.NEEDS TO BE CHANGED*/
+            background-position: center ;
+            background-attachment: fixed;/* image is fixed in the viewport so that it doesn’t move when the content’s height is greater than the image’s height */
+            background-size: cover; /* image rescale based on the container’s size */
+            background-color: #464646;/*Show when page loads*/
+          }
+      #login
+       {
+             font-size:28px;
+             font-weight:bold;
+             color:rgb(255, 255, 255);
+             text-shadow: 6px 0px 5px rgb(0, 0, 0);
+             letter-spacing: 4px;
+             margin-left: 36px
+       }
+
+  /* width */
+::-webkit-scrollbar {
+  
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background:skyblue; 
+opacity:0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background:darkblue; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #555; 
+}
+
+.b1 , .btn-success, .btn-warning
+{
+  width:200px;
+  transition-duration: 0.4s;
+  border-radius: 50px;
+  color: rgb(20, 197, 159);
+  font-weight: bold;
+}
+.b1:hover , .btn-success:hover, .btn-warning:hover
+{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.3),0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+
+
+table.table-login
+{
+margin-left:auto;
+border:0px solid rgb(255, 255, 255);
+border-radius: 10px;
+background-image: linear-gradient(to right, rgba(255, 255, 255, 0.0) , rgba(255, 255, 255, 0.4));
+/*background-color:rgba(255, 255, 255, 0.3);*/
+width:90%;
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.3),0 17px 50px 0 rgba(0,0,0,0.19);
+
+}
+
+table.table-login  > tbody > tr >th
+      {
+        
+        border:0px ;
+        color:white;
+        font-size:19px;
+        text-shadow: 2px 0px 2px black;
+        padding-left: 100px;
+      }
+      table.table-login  > tbody > tr > td
+      {
+        font-size:17px;
+        border:0px solid yellow ;
+       /* padding: 0px 50px;*/
+      }
+      input
+		{
+			border-width: 0px;
+			border-radius: 10px;
+			font-size: 17px;
+			transition-duration: 0.4s;
+			padding: 5px;
+			width: 100%
+
+		}
+		input:hover,input:active
+		{
+			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.3),0 17px 50px 0 rgba(0,0,0,0.19);
+			border-bottom:4px solid skyblue;
+		}
+		#label
+		{
+			font-size: 17px;
+			font-weight:none;
+			color: white;
+			letter-spacing: 3px;
+			text-shadow: 0px 0px 5px rgb(0, 0, 0);
+		}
+		#mainheader
+		{
+			margin:10px;
+			border-radius: 10px;
+			background-image: linear-gradient(to right, rgba(255, 255, 255, 0.0) 30% , rgba(255, 255, 255, 0.4));
+			/*background-color:rgba(255, 255, 255, 0.3);*/
+			font-family: verdana;
+			width:100%;
+			padding: 25px;
+			font-size:40px;
+             font-weight:bold;
+             color:rgb(255, 255, 255);
+             text-shadow: 6px 0px 5px rgb(0, 0, 0);
+             letter-spacing: 4px;
+		}
+</style>
+
+<!--Login portal-->
+<div class=block>
+	<Div class="row ml-0 mr-0 pt-1" ><div  id="mainheader" class="text-right">EXTRANET</div></Div>
+    <Div class="row ml-0 mr-0">
+      <div class="col-5" style=" ">
+	    <div class="" style="height:7vh">
+	    </div>
+	    <div class="align-items-top " style="height:73vh; " >
+	         <form method="post" action="">
+	          <table class="table table-login" >
+	            <tr  style="">
+	              <td colspan=2 ><div class="text-left" id="login" style="font-family: verdana;">LOG IN</div></td>
+	            </tr>
+	            {% csrf_token %} <!--BACKEND-->
+	            <tr class="">
+	              <td class="pt-2 pl-5 pr-5" colspan=2><div id="label">USERNAME:</div><input type="text" name="username" size=20 placeholder="Enter your Username" REQUIRED><br></td>
+	            </tr>
+	            <tr>
+	              <td class="pb-5  pl-5 pr-5" colspan=2><div id="label">PASSWORD:</div><input type="password" name="password" size=20 placeholder="Enter your password" REQUIRED><br></td>
+	            </tr>
+	          <tr style=""><td class="pl-5 pb-5"><input  type="reset" class="btn btn-warning" value="RESET"></td>
+	          <td><div class="d-flex justify-content-end pr-5"><input  type="submit" class="btn btn-success" value="LOG IN"></div></td></tr></table>
+	          <div id="label" class="text-danger">{% for m in messages%} {{m}} {% endfor %}<!--BACKEND--></div>
+	        </form>
+	       </div> 
+	   </div>
+        <div class="col-9" style="overflow: auto; ">    
+          <!--THIS IS THE RIGHT COLUMN OF THE GRID, LEFT OF WHICH CONTAINS THE LOGIN PORTAL. WORK HERE DEBAYAN.!-->
+
+        </div>
+</Div>
+</div>
+</html>

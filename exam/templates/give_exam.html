@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="POST">
+      {% csrf_token %} {% for q in arr %}
+      <div>
+        <p>{{q.desc}}</p>
+        <br />
+        <input type="radio" name="{{q.id}}" value="a" />{{q.op1}}
+        <input type="radio" name="{{q.id}}" value="b" />{{q.op2}}
+        <input type="radio" name="{{q.id}}" value="c" />{{q.op3}}
+        <input type="radio" name="{{q.id}}" value="d" />{{q.op4}}
+      </div>
+      <br /><br />
+      {% endfor %}
+
+      <input type="submit" value="Save" />
+    </form>
+  </body>
+</html>

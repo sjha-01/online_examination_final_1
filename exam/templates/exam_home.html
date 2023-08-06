@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3 align="right">Hello {{request.user}}</h3>
+    <br />
+
+    <a href="{% url 'create_paper' %}">Create Paper</a><br />
+    <a href="{% url 'create_question_answer' %}">Create Question_answer</a
+    ><br />
+    <a href="{% url 'give_exam' %}">Give Exam</a><br />
+    <a href="{% url 'login' %}">Login</a><br /><br />
+    <a href="{% url 'ajax_exam' %}">Ajax exam</a><br /><br />
+    <a href="{% url 'logout' %}" align="right">Logout</a><br />
+  </body>
+</html>

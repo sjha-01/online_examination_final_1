@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table border="3" width="75%">
+      {% for x in res %}
+      <tr>
+        <td>{{x.name}}</td>
+        <td>{{x.age}}</td>
+        <td>{% if x.dob %} {{x.dob}} {% endif %}</td>
+        <td><a href="{% url 'update_customer' pk=x.id %}">Update</a></td>
+        <!--    url using name -->
+        <td><a href="{% url 'delete_customer' pk=x.id %}">Delete</a></td>
+        <!--     url using name -->
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="{% url 'create_customer' %}">Create New Record</a>
+  </body>
+</html>

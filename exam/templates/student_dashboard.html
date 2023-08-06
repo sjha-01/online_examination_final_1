@@ -1,0 +1,305 @@
+{%load static%}
+{% static 'images' as baseUrl %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Student Dashboard</title>
+</head>
+
+
+<style>
+    body { 
+        align-content:center;
+        /*background-image: url("Untitled.png");*/
+        border: 0px;
+        <!-- background-image: url("{%static 'images/untitled1.png'%}"); -->
+        /*height: 70vh;text-align:center;*/
+        <!-- background-size:cover; -->
+        } 
+        
+</style>
+<!--Navigation Bar-->
+<style>
+    .navbar/*navigation bar*/
+{
+  
+}
+.c
+    {
+    color:rgba(10, 70, 15, 0.705);
+    transition: 0.15s;
+
+    }
+    .c:hover
+    {
+    color:white;
+    transition: 0.15s;
+    text-shadow: 2px 0px 2px black;
+    }
+    .dropdown-menu
+    {
+        background-color:white;
+    /* background:transparent;*/
+    }
+    .dropdown-item
+    {
+        font-weight: 500;
+        color:black;
+
+    }
+    .dropdown-item:hover
+    {
+        background-image: linear-gradient(to right,white,skyblue);
+        transition: 0.15s;
+    }
+    .button-1
+{
+    background-color:#fff3e6;
+    color:white;
+    transition:0.15s;
+    border-radius: 50%;
+    padding:20px; 
+}
+.button-1:hover
+{
+    background-color:#ffbf5f;
+    transition:0.15s;
+}
+h1, h4 {
+    font-size:40px;
+    font-weight:bold;
+    color:rgb(255, 255, 255);
+    text-shadow: 4px 0px 5px rgb(11, 13, 112);
+    letter-spacing: 4px;
+}
+    
+    .dropdown-menu
+    {
+        transition: 0.5s;
+    }
+    .dropdown-menu:active
+    {
+        transition: 0.5s;
+    }
+    .dropdown-menu {
+    padding: 0px;
+    border:1px solid grey;
+}
+</style>
+
+
+<nav class="navbar  navbar-expand-lg navbar-light fixed-top" style="background-COLOR:lightgreen; ">
+<a class="navbar-brand pl-5"  style="white"><h4>Extranet</h4></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="collapsibleNavbar">
+<ul class="navbar-nav">
+    <li class="nav-item ">
+        <a class="nav-link pl-4"  href="{% url 'student_dashboard' %}" ><div class=c><h5>Home</h5></div></a>
+    </li>
+    </ul>
+        {% if published_papers %}
+    <ul class="navbar-nav">
+    <li class="nav-item ">
+        
+        <a class="nav-link pl-4"  href="{% url 'marks_for_student' published_papers.0.id %}"><div class=c><h5>Past Exam Results</h5></div></a>
+    </li>
+    </ul>
+    {% endif %}
+</div>
+<ul class="navbar-nav">
+    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" STYLE="color:#793702;"><img src="{%static 'images/account.png'%}" style="height: 35px;"></a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+        <h5 class="dropdown-header" style="color:;   background-color: lightgreen; padding: 20px 50px; font-weight: bold;"><img src="{%static 'images/account.png'%}" style="height: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;{{request.user.student.name}}</h5>
+        <a class="dropdown-item" href="{% url 'change_password' %}">Change password</a>
+        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a></div></button>
+    </li>
+</ul> 
+</nav>
+</div>
+
+
+
+
+<!--question details-->
+<style>
+
+    /* width */
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+background:skyblue; 
+opacity:0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+background:green; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: yellowgreen; 
+}
+.b1
+{
+color:white;
+background-color: blue;
+}
+.b1 , .btn-success, .btn-danger
+{
+    width:100px;
+
+}
+.b1:hover
+{
+    transition: 0.15s;
+
+    background-color:#020AC4;
+}
+
+
+.table-questions
+{
+border:3px solid darkblue;
+}
+table.table-questions  > tbody > tr
+        {
+        border:2px solid darkblue;
+            color:      color:yellowgreen;
+
+        }
+</style>
+<div class=block Style="margin-top:80px;"><!--div><div class="block" style="/*background-image: url(Untitled.png);"-->
+    <Div class="row ml-0 mr-0" style="">
+        <div class="col-4" style=" overflow: auto; ">
+        <img src="{%static 'images/illustration-15.svg'%}" style="width:100%; height: 88vh; "></div>
+    <div class="col-8" style="overflow: auto; "><!--height:77vh-->
+
+        
+        
+        
+        
+        <!--Welcome text-->
+        <div class="row">
+        <div class="col-md-12 text-right p-2" style="color:blue; font-weight:bold; font-family:Modern No. 20; font-size: 30px; text-shadow: 2px 2px 5px grey;">
+            Welcome, {{request.user.student.name}} 
+        </div>
+        </div>
+
+
+
+
+
+
+        <!--Available Papers-->
+        <div class=row >
+        <div class="col-12 p-4" >
+            
+            <p style="color:blueviolet; font-weight:none; font-family:Modern No. 20; font-size:50px; letter-spacing:3px;   text-decoration: none; text-shadow: 0px 0px black;">{% if not no_paper %}Available papers{%else%}No paper{%endif%}</p>
+            
+         
+                    <table class="table table-questions m-auto" style="color:blue; font-family:Modern No. 20; text-decoration:none; text-shadow: 0px 0px grey;">
+                {% for x in resume_papers%}
+                <tr>
+                    <td>
+                        
+                        <div class="row">
+                            <div  class="col text-info" style="font-size: 23px;">{{x}}</a></div>
+                            <div  class="col text-right"><a href="{% url 'give_exam' x.id 'r' %}"> <button type="button" class="btn btn-success">Resume</button></a>
+                        </div>
+
+                    </td>
+                </tr> {% endfor %}
+                 {% for x in give_papers%}
+                <tr>
+                    <td>
+                       
+                        <div class="row">
+                            <div  class="col text-info" style="font-size: 23px;">{{x}}</a></div>
+                            <div  class="col text-right"><a href="{% url 'give_exam' x.id 'n' %}"> <button type="button" class="btn btn-success">Give Exam</button></a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                 {% for x in attended_papers%}
+                <tr>
+                    <td>
+                        
+                        <div class="row">
+                            <div class="col text-info" style="font-size: 23px;">{{x}}</a></div>
+                            <div  class="col text-right text-primary" style="font-size: 23px;">Attended
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% for x in missed_papers%}
+                <tr>
+                  <td>
+                    <div class="row">
+                        <div class="col text-info" style="font-size: 23px;">{{x}}</div>
+                        <div  class="col text-right text-danger" style="font-size: 23px;">Missed
+                        </div><!--/td-->
+                    </td>
+                  </tr> 
+                  {% endfor %}
+                
+                </table>
+        </div>
+            
+        </div>
+        </div>
+
+
+
+    
+    
+
+
+        <!--paper details-->
+    
+
+
+    
+
+
+<!--footer-->
+<style>
+    .b/*footer*/
+    {
+        background-COLOR:lightgreen;;
+        color:white;
+            /* margin-left:60px; 
+        margin-bottom:60px; 
+        margin-right:60px;*/
+        position:fixed;
+        bottom:0;
+        width:100%;
+    }
+    .footer
+        {
+        width:20%;
+        margin-left:auto;
+        }
+</style>
+<div class="b">
+    
+        <div trademark style="text-align:center; color: rgb(6, 74, 201); ">
+        © 2021 ExtraNET.com are registered trademarks of SXC. All rights reserved.
+        </div>
+</div>
+</div>

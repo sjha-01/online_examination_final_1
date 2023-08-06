@@ -1,0 +1,19 @@
+{%extends 'base.html'%} {% block content %}
+<!-- <h1>Hello {{name}}</h1> -->
+
+<h1>Register</h1>
+<form action="" method="post">
+  {% csrf_token %} Enter username :
+  <input type="text" name="uname" /><br /><br />
+  Enter password : <input type="password" name="pwd1" /><br /><br />
+  Confirm passworddd : <input type="password" name="pwd2" /><br /><br />
+  <!-- Enter 2nd number : <input type="text" name="n2" /><br /><br /> -->
+  <input type="submit" />
+</form>
+
+<div>
+  {%for message in messages%}
+  <h3>{{message}}</h3>
+  {%endfor%}
+</div>
+{%endblock%}

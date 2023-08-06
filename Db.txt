@@ -1,0 +1,30 @@
+CRUD
+
+0. Normal update
+
+r1[] ,queryset
+r=r1[0]
+r.age+=5, individual modifications on variables, not on queySET elements
+r.save()
+
+ 1. queryset update
+
+ Customer.objects.filter(age__gt=25).update(married=1)
+
+ from django.db.models import F
+ Customer.objects.filter(age__gt=25).update(age=F('age')+1)
+
+ 2. Cr
+ Customer.objects.create(........)
+
+ c1=Customer(.........)
+ c1.save()
+
+
+3. 
+
+
+
+Queries, relations, spanning filters, aggregate funtions
+
+1. 

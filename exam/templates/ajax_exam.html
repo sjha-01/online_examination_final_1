@@ -1,0 +1,563 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Exam Interface</title>
+</head>
+
+
+<style>
+    body { 
+        align-content:center;
+        
+        border: 0px;
+        
+        /*height: 70vh;text-align:center;*/
+        background-size:cover;
+        } 
+        #view
+      {
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      }
+        
+</style>
+<!--Navigation Bar-->
+<style>
+    .navbar/*navigation bar*/
+{
+  
+}
+.c
+    {
+    color:rgba(10, 70, 15, 0.705);
+    transition: 0.15s;
+
+    }
+    .c:hover
+    {
+    color:white;
+    transition: 0.15s;
+    text-shadow: 2px 0px 2px black;
+    }
+    .dropdown-menu
+    {
+        background-image: linear-gradient(to bottom right,  #004b05, #00ff2f);
+    /* background:transparent;*/
+    }
+    .dropdown-item
+    {
+        font-weight: 500;
+        color:black;
+
+    }
+    .dropdown-item:hover
+    {
+        background-color:yellowgreen;
+        transition: 0.15s;
+    }
+    .button-1
+{
+    background-color:#fff3e6;
+    color:white;
+    transition:0.15s;
+    border-radius: 50%;
+    padding:20px; 
+}
+.button-1:hover
+{
+    background-color:#ffbf5f;
+    transition:0.15s;
+}
+h1, h3 {
+    font-size:60px;
+    font-weight:bold;
+    color:rgb(255, 255, 255);
+    text-shadow: 4px 0px 5px rgb(11, 13, 112);
+}
+    
+    .dropdown-menu
+    {
+        transition: 0.5s;
+    }
+    .dropdown-menu:active
+    {
+        transition: 0.5s;
+    }
+    .dropdown-menu {
+    padding: 0px;
+    border:1px solid grey;
+}
+</style>
+
+
+<nav class="navbar  navbar-expand-lg navbar-light fixed-top" style="background-COLOR:SKYBLUE; ">
+<a class="navbar-brand pl-2"  style="font-size:35px; font-weight:bold; color:rgb(255, 255, 255); text-shadow: 4px 0px 5px blue;">Extranet</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+</button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    
+    
+  </div>
+  <ul class="navbar-nav">
+    <div id=timer style="font-weight:bold; color:yellow; font-size:20px;"> </div>
+  </ul> 
+</nav>
+</div>
+</ul> 
+</nav>
+</div>
+  
+   
+<body
+    onload="autoSubmit(){% if attempted_answers %}; fillAnswers();{% endif %}"
+  >
+<!--body-->
+<style>
+  .submit-1
+  {
+      background-color:#fff3e6;
+    color:#793702;
+     transition:0.15s;
+     padding-bottom: 0px;
+     padding-top:3px;
+     padding-right: 13px;
+  }
+  .submit-1:hover
+  {
+    background-color:#ffbf5f;
+    transition:0.15s;
+  }
+  .list-group-item
+  {
+    background-color: transparent;
+    border:0px solid #793702;
+    border-radius: 0;
+    color:#793702;
+  }
+  .b1
+    {
+        color:#fff3e6;
+            background-color: #793702;
+    }
+    .b1:hover
+    {
+        background-color: #ffbf5f;
+    }
+
+    .table-questions
+{
+  border:3px solid brown
+}
+table.table-questions  > tbody > tr
+        {
+          border:2px solid brown;
+
+        }
+</style>
+
+
+
+
+<!--question-->
+<div class="block" style=" background-image: url(Untitled.png); background-size:cover;">
+   <div class="row ml-0 mr-0" >
+      <div class="col-9" style="height:100vh; border-left:5px solid skyblue ;">
+       <!-- <body onload="autoSubmit()"> -->
+        <br><br><br>  <br>
+
+   
+    <div class="row ml-0 mr-0" >
+      <div class="col-8">
+    <form action= method=POST>
+      {% csrf_token %}
+      <div id="view" style="visibility: hidden;">
+      </div>
+    </form></div>
+ <div class="col-4">
+     <p id="mssg1" style="visibility: visible;">Click on the <a style="color:BLSCK; font-weight:bold;">Go to exam</a> button to give exam.<a style="color:red; font-weight:bold;"><br>Try not to exit fullscreen once in.<br>Repeated exiting will lead to suspension.</a></p>
+    <button type="button" class="btn btn-info"id="toggle" onclick="openFullscreen()" >
+    Go to exam
+  </button></div>
+    </div>
+  <!-- </body> -->
+
+      </div>
+      <div class="col-3" style=" border-left:5px solid skyblue; border-right:5px solid skyblue;">
+        <br><br><br><br><br>
+           <p id="switch" style="visibility: hidden;"></p><div>
+      <p id="mssg" style="visibility: hidden;"></p>
+    </div>
+     </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<!--footer-->
+<style>
+    .b/*footer*/
+    {
+       text-align:right;
+        color:white;
+            /* margin-left:60px; 
+        margin-bottom:60px; 
+        margin-right:60px;*/
+        position:fixed;
+        bottom:0;
+        width:100%;
+    }
+  
+</style>
+<div class="b" >
+        <div class=sub style="padding-right: 10px; padding-bottom:5px"><input type="button" class="btn btn-primary" onclick="submit_form()" value=Submit "></div>
+        <div trademark style="text-align:center;  background-COLOR:SKYBLUE;">
+        © 2021 ExtraNET.com are registered trademarks of SXC. All rights reserved.
+        </div>
+</div>
+</div>
+
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+
+    <script type="text/javascript">
+      var gfg = document.documentElement; 
+      var warning = {{warning}} ;
+      let server_left_time=0;
+      let timer_left_time=0;
+      let left_time=0;
+      let myInterval;
+
+      var t=0, h=0, m=0,s=0;
+      let ans_list = {};
+      //let ans_list1 = {};
+      let csr = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+      ans_list.csrfmiddlewaretoken = csr;
+      
+      let count = 1;
+      var no = {{ arrL }};
+      var x = "<div class=\"container-fluid\"> <div class=\"row\">";
+      var results = JSON.parse(JSON.parse('{{ arr | escapejs }}'));
+      console.log(results);
+      console.log(ans_list);
+      while(count<=no)
+		{
+			x=x+'  <div class="col-3"> <input type=button id='+count+' value='+count+' onclick=showQuestions('+count+') style="font-size:25px; background-color:#ECECEC;"></div>';
+			count++;
+		}
+    x=x+'</div></div>'
+	  document.getElementById("mssg").innerHTML=x;
+
+
+    var output = document.getElementById("mssg1"); 
+    document.addEventListener("fullscreenchange", function() { 
+      //output.innerHTML = "A computer science portal for geeks";
+      if (getFullelement()) {
+        console.log(`entered full-screen mode.`);
+        document.getElementById("view").style.visibility = "visible";
+        document.getElementById("mssg").style.visibility = "visible";
+        document.getElementById("toggle").style.visibility = "hidden";
+        document.getElementById("mssg1").style.visibility = "hidden";
+        //output.innerHTML = "full screen";
+      } else {
+        console.log('Leaving full-screen mode.');
+        warning--;
+        output.innerHTML = 'Click on the <a style="color:BLSCK; font-weight:bold;">Go to exam</a> button to go back to the exam.<a style="color:red; font-weight:bold;"><br>Try not to exit fullscreen once in.<br>Repeated exiting will lead to suspension.</a></p>';
+        document.getElementById("view").style.visibility = "hidden";
+        document.getElementById("mssg").style.visibility = "hidden";
+       
+        if (warning>0)
+      {
+        document.getElementById("toggle").style.visibility = "visible";
+        document.getElementById("mssg1").style.visibility = "visible";
+        document.getElementById("switch").style.visibility = "visible";
+            document.getElementById("switch").innerHTML= "<span style=\"color:red; font-weight:bold\">Warning:</span> <span style=\"color:blue;\">A new window has been opened or a pop has occured. Doing it for " + warning + " more time[s] will get you disqualified from the exam.</span>";
+
+        
+      }
+      } 
+    });  
+
+      var view = ''/* '<p>'+results[0].fields.desc+'</p>'+
+		'<input type=radio class=ans onclick=radioActivity('+results[0].pk+') name='+results[0].pk+' value=a />'+results[0].fields.op1+
+		'<input type=radio class=ans onclick=radioActivity('+results[0].pk+') name='+results[0].pk+' value=b />'+results[0].fields.op2+
+		'<input type=radio class=ans onclick=radioActivity('+results[0].pk+') name='+results[0].pk+' value=c />'+results[0].fields.op3+
+		'<input type=radio class=ans onclick=radioActivity('+results[0].pk+') name='+results[0].pk+' value=d />'+results[0].fields.op4+
+		' <br /> <input type=button value=Clear onclick=clearSelection(1) /> <input type=button onclick=save_form() value=Save /> <br /><br />'*/
+	  document.getElementById("view").innerHTML=view;
+    console.log(results[0].pk)
+
+       function showQuestions(no)
+       {
+          var no = Number(no);
+          //console.log(no);
+          var ques = results[(no-1)].fields.op1
+          //console.log(ques);
+          checked_option = ans_list[results[(no-1)].pk];
+          console.log('anslist from show')
+          console.log(ans_list)
+          
+          switch(checked_option) {
+              case 'a':
+              {var view = '<p style="font-size:20px;"><a style="font-size:30px; font-weight:bold; color:blue; text-decoration:underline;">Question: '+ no+'<br></a><a style="font-size:20px; font-weight:bold; color:black;">'+results[(no-1)].fields.desc+'</a><br>';
+              if((results[(no-1)].fields.img_path).length!=0)
+                view+='<img src="/media/'+results[(no-1)].fields.img_path+'" height=300 width=500/ alt=" "><br>'
+
+              //<img src="/media/'+results[(no-1)].fields.img_path+'" height=300 width=500/ alt=" ">'
+              
+              
+              
+              view+='<br><a style="font-size:20px; font-weight:bold; color:blue;;">Choose options:</a> '+  '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=a checked/>&nbsp'+results[(no-1)].fields.op1+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=b />&nbsp'+results[(no-1)].fields.op2+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=c />&nbsp'+results[(no-1)].fields.op3+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=d />&nbsp'+results[(no-1)].fields.op4+
+              ' <br /><br /> <input type=button class="btn btn-secondary" value=Clear onclick=clearSelection('+results[(no-1)].pk+','+no+') /> <input type=button  class="btn btn-success" onclick=showQuestions('+(no+1)+') value=Next /> <br /><br /></p>';
+               document.getElementById(no).style.backgroundColor="green";
+              }
+                  break;
+                case 'b':
+              {var view = '<p><a style="font-size:30px; font-weight:bold; color:blue; text-decoration:underline;">Question: '+ no+'<br></a><a style="font-size:20px; font-weight:bold; color:black;">'+results[(no-1)].fields.desc+'</a><br>'
+                if((results[(no-1)].fields.img_path).length!=0)
+                view+='<img src="/media/'+results[(no-1)].fields.img_path+'" height=300 width=500/ alt=" "><br>'
+
+                view+='<br><a style="font-size:20px; font-weight:bold; color:blue;;">Choose options:</a> '+ '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=a />&nbsp'+results[(no-1)].fields.op1+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=b checked/>&nbsp'+results[(no-1)].fields.op2+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=c />&nbsp'+results[(no-1)].fields.op3+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=d />&nbsp'+results[(no-1)].fields.op4+
+              ' <br /><br /> <input type=button class="btn btn-secondary" value=Clear onclick=clearSelection('+results[(no-1)].pk+','+no+') /> <input type=button class="btn btn-success" onclick=showQuestions('+(no+1)+') value=Next /> <br /><br />'; document.getElementById(no).style.backgroundColor="green";}
+                  break;
+                  case 'c':
+              {var view = '<p><a style="font-size:30px; font-weight:bold; color:blue; text-decoration:underline;">Question: '+ no+'<br></a><a style="font-size:20px; font-weight:bold; color:black;">'+results[(no-1)].fields.desc+'</a><br>'
+                if((results[(no-1)].fields.img_path).length!=0)
+                view+='<img src="/media/'+results[(no-1)].fields.img_path+'" height=300 width=500/ alt=" "><br>'
+                
+                
+                view+='<br><a style="font-size:20px; font-weight:bold; color:blue;;">Choose options:</a> '+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=a />&nbsp'+results[(no-1)].fields.op1+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=b />&nbsp'+results[(no-1)].fields.op2+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=c checked/>&nbsp'+results[(no-1)].fields.op3+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=d />&nbsp'+results[(no-1)].fields.op4+
+              ' <br /> <br /><input type=button class="btn btn-secondary" value=Clear onclick=clearSelection('+results[(no-1)].pk+','+no+') /> <input type=button  class="btn btn-success" onclick=showQuestions('+(no+1)+') value=Next /> <br /><br />'; document.getElementById(no).style.backgroundColor="green";}
+                  break;
+                  case 'd':
+              {var view = '<p><a style="font-size:30px; font-weight:bold; color:blue; text-decoration:underline;">Question: '+ no+'<br></a><a style="font-size:20px; font-weight:bold; color:black;">'+results[(no-1)].fields.desc+'</a><br>'
+              
+                if((results[(no-1)].fields.img_path).length!=0)
+                view+='<img src="/media/'+results[(no-1)].fields.img_path+'" height=300 width=500/ alt=" "><br>'
+                view+='<br><a style="font-size:20px; font-weight:bold; color:blue;;">Choose options:</a> '+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=a />&nbsp'+results[(no-1)].fields.op1+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=b />&nbsp'+results[(no-1)].fields.op2+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=c />&nbsp'+results[(no-1)].fields.op3+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=d checked/>&nbsp'+results[(no-1)].fields.op4+
+              ' <br /><br /> <input type=button class="btn btn-secondary" value=Clear onclick=clearSelection('+results[(no-1)].pk+','+no+') /> <input type=button  class="btn btn-success" onclick=showQuestions('+(no+1)+') value=Next /> <br /><br />'; document.getElementById(no).style.backgroundColor="green";}
+              break;
+                default:
+              {var view = '<p><a style="font-size:30px; font-weight:bold; color:blue; text-decoration:underline;">Question: '+ no+'<br></a><a style="font-size:20px; font-weight:bold; color:black;">'+results[(no-1)].fields.desc+'</a><br>'
+                if((results[(no-1)].fields.img_path).length!=0)
+                view+='<img src="/media/'+results[(no-1)].fields.img_path+'" height=300 width=500/ alt=" "><br>'
+                view+='<br><a style="font-size:20px; font-weight:bold; color:blue;;">Choose options:</a> '+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=a />'+results[(no-1)].fields.op1+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=b />'+results[(no-1)].fields.op2+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=c />'+results[(no-1)].fields.op3+
+              '<br><br /><input type=radio class=ans onclick=radioActivity('+results[(no-1)].pk+','+no+') name='+results[(no-1)].pk+' value=d />'+results[(no-1)].fields.op4+
+              ' <br /> <br /><input type=button class="btn btn-secondary" value=Clear onclick=clearSelection('+results[(no-1)].pk+','+no+') /> <input type=button   class="btn btn-success"onclick=showQuestions('+(no+1)+') value=Next /> <br /><br />';document.getElementById(no).style.backgroundColor="#ECECEC";}
+              }
+		     document.getElementById("view").innerHTML=view;
+      }
+
+
+    function pause() {
+      console.log("lost focus");
+      warning--;
+      
+    }
+
+    function play() {
+      console.log("focus");
+      if (warning>0)
+      {
+            document.getElementById("switch").style.visibility = "visible";
+            document.getElementById("switch").innerHTML= "<span style=\"color:red; font-weight:bold\">Warning:</span> <span style=\"color:blue;\">A new window has been opened or a pop has occured. Doing it for " + warning + " more time[s] will get you disqualified from the exam.</span>";
+
+          }
+      else
+      {
+        document.getElementById("view").style.visibility = "hidden";
+        document.getElementById("mssg").style.visibility = "hidden";
+        document.getElementById("toggle").style.visibility = "hidden";
+        document.getElementById("mssg1").style.visibility = "hidden";
+        document.getElementById("switch").style.visibility = "visible";
+        document.getElementById("switch").innerHTML= "disqualified";
+        submit_form();
+      }
+    }
+
+    window.addEventListener('blur', pause);
+    window.addEventListener('focus', play);
+
+
+    /* this fn does all the tasks */
+      function autoSubmit(){
+          server_left_time={{server_left_time}};
+
+          timer_left_time={{timer_left_time}};
+          left_time=server_left_time<timer_left_time?server_left_time:timer_left_time;
+
+         /* setTimeout(submit_form, (left_time-1)*1000);*/
+
+
+          myInterval = setInterval(() => {
+            left_time--;
+            if(left_time==0)
+              submit_form();
+              
+            //time coversion into hh:mm:ss
+            t=left_time;
+            h=(t/3600);
+            m=((h-Math.floor(h))*60);
+            s=t%60;
+            document.getElementById("timer").innerHTML='<a style="color:blue">Time left : </a>'+Math.floor(h)+'&nbsp:&nbsp'+Math.floor(m)+'&nbsp:&nbsp'+Math.floor(s);
+            if(left_time==0)
+                stopInterval();
+          }, 999);
+
+
+          setInterval(save_form, 2000);
+        }
+
+        function stopInterval(){
+          clearInterval(myInterval);
+        }
+
+        function submit_form()
+        {
+          $.ajax({
+            url: "{%  url 'give_exam' paper.id 'dummy' %}",
+            method: "POST",
+            data: ans_list,
+          });
+
+          setTimeout(() => {
+          window.location.replace("{% url 'student_dashboard' %}");
+          }, 200);
+          
+        }
+        
+        function fillAnswers() {
+          let ans_list_temp=JSON.parse(JSON.parse('{{ attempted_answers | escapejs }}'));
+          for(x in ans_list_temp){
+            ans_list[ans_list_temp[x].fields.question]=ans_list_temp[x].fields.selected_option
+          }
+          
+
+
+          console.log('anslist from fillans')
+          console.log(ans_list)
+
+          /*for(let q_id in answers)
+          {
+            let q = document.getElementsByName(q_id);
+          //let selectedOption='';
+          let index=answers[q_id].charCodeAt(0)-97;
+            q[index].checked=true;
+          }*/
+       }
+
+      function radioActivity(q_id,serial_no) {
+        let q = document.getElementsByName(q_id);
+        //let selectedOption='';
+        for (let i = 0; i < q.length; i++) {
+          if (q[i].checked) {
+            ans_list[q_id] = q[i].value;
+            //ans_list1[q_id] = q[i].value;
+            console.log('ans_list from radio ac')
+            console.log(ans_list);
+            document.getElementById(serial_no).style.backgroundColor="green";
+            break;
+          }
+        }
+        //save_option(q_id);
+      }
+
+    function clearSelection(q_id,serial_no) {
+      
+      
+      //console.log('clearsel')
+      
+          let q = document.getElementsByName(q_id);
+          for (let i = 0; i < q.length; i++)
+            if (q[i].checked) {
+              q[i].checked = false;
+              document.getElementById(serial_no).style.backgroundColor="#ECECEC";
+              break;
+            } 
+            console.log(q_id)
+          ans_list[q_id] = "u";
+          console.log(ans_list)
+        }
+      
+ function save_form() {
+          //let temp_ans_list = JSON.parse(JSON.stringify(ans_list));
+          ans_list.timer_left_time=left_time;
+          ans_list.warning=warning;
+          $.ajax({
+            url: "{%  url 'ajax_exam' paper.id %}",
+            method: "POST",
+            data: ans_list,
+          });
+        }
+
+      document.addEventListener('contextmenu',function(e){
+				e.preventDefault()
+			})
+
+
+      /*document.addEventListener('keydown', function (e) {
+ 		 e.preventDefault()
+		})*/
+
+    function getFullelement()
+    {
+      return document.fullscreenElement
+      || document.webkitFullscreenElement
+      || document.mozFullscreenElement
+      || document.msFullscreenElement;
+    }
+
+    function openFullscreen() { 
+      if (!getFullelement()) { 
+        gfg.requestFullscreen(); 
+      } 
+      showQuestions(1)
+    } 
+
+     /* function toggle()
+	{
+		if(true)
+		{
+			document.documentElement.requestFullscreen().catch(console.log)
+		}
+		//keepfull();
+	}*/
+    </script>
+
+  </body>
+
+</html>

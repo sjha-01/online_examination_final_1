@@ -1,0 +1,420 @@
+ {%load static%}
+{% static 'images' as baseUrl %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+     <title>Student Marks</title>
+   </head>
+
+
+  <style>
+      body { 
+        align-content:center;  
+        background-color: #fff3e6;   
+        height: 70vh;/*text-align:center;*/
+        <!-- background-image: url({%static 'images/Untitled.png'%});
+        background-size:cover; -->
+        } 
+        
+  </style>
+
+  
+  
+  
+  
+  
+  
+  <!--Navigation Bar-->
+  <style>
+    .navbar/*navigation bar*/
+  {
+     
+
+  }
+  .c
+    {
+      color:#ffcc80;
+      transition: 0.15s;
+
+    }
+    .c:hover
+    {
+      color:#fcdcb9;
+      transition: 0.15s;
+      text-shadow: 2px 0px 2px rgb(180, 114, 59);
+    }
+    .dropdown-menu
+      {
+        background-color:#fff3e6 ;
+      }
+      .dropdown-item
+      {
+        font-weight: 500;
+        color:#793702;
+
+      }
+      .dropdown-item:hover
+      {
+        background-color:#ffcc80;
+        transition: 0.15s;
+      }
+      .button-1
+  {
+    background-color:#fff3e6;
+    color:white;
+     transition:0.15s;
+     border-radius: 50%;
+     padding:20px; 
+  }
+  .button-1:hover
+  {
+    background-color:#ffbf5f;
+    transition:0.15s;
+  }
+  h1, h4 {
+    font-size:40px;
+    font-weight:bold;
+    color:rgb(255, 255, 255);
+    text-shadow: 4px 0px 5px rgb(11, 13, 112);
+    letter-spacing: 4px;
+}
+      .dropdown-menu
+      {
+        transition: 0.5s;
+      }
+      .dropdown-menu:active
+      {
+        transition: 0.5s;
+      }
+      .dropdown-menu {
+    padding: 0px;
+    border:1px solid grey;
+}
+  </style>
+
+
+  <nav class="navbar  navbar-expand-lg navbar-light fixed-top" style="background-color: #793702;">
+  <a class="navbar-brand pl-5"  style="color: #ffcc80;"><h4>Extranet</h4></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+   <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link pl-4"  href="{% url 'teacher_dashboard' %}" ><div class=c><h5>Home</h5></div></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link pl-4"  href="{% url 'papers_and_questions' %}"><div class=c><h5>Question papers</h5></div></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link pl-4"  href="{% url 'marks_for_teacher' %}" ><div class=c><h5>Student marks</h5></div></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link pl-4"  href="{% url 'unlock_papers_and_marks' %}"><div class=c><h5>Unlock paper / Publish Marks</div> </a>
+      </li>
+    </ul>
+    
+  </div>
+  <ul class="navbar-nav">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" STYLE="color:#793702;"><img src="{%static 'images/account1.png'%}" style="height: 50px;"></a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+        <h5 class="dropdown-header" style="color:#fff3e6; background-color: #793702;  padding: 20px 50px; font-weight: bold;  "><img src="{%static 'images/account1.png'%}" style="height: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;{{request.user.teacher.name}}</h5>
+        <a class="dropdown-item" href="{% url 'change_password' %}">Change password</a>
+        <a class="dropdown-item" href="{% url 'logout' %}">Logout</a></div></button>
+    </li>
+  </ul> 
+</nav>
+</div>
+
+
+<!--body-->
+<style>
+  .submit-1
+  {
+      background-color:#fff3e6;
+    color:#793702;
+     transition:0.15s;
+     padding-bottom: 0px;
+     padding-top:3px;
+     padding-right: 13px;
+  }
+  .submit-1:hover
+  {
+    background-color:#ffbf5f;
+    transition:0.15s;
+  }
+  .list-group-item
+  {
+    background-color: transparent;
+    border:0px solid #793702;
+    border-radius: 0;
+    color:#793702;
+  }
+  .b1
+    {
+        color:#fff3e6;
+            background-color: #793702;
+    }
+    .b1:hover
+    {
+        background-color: #ffbf5f;
+    }
+
+table.table-questions
+{
+  border:3px solid #793702;
+}
+table.table-questions  > tbody > tr
+        {
+          border:2px solid #793702;
+
+        }
+        table.table-questions  > tbody > tr > td
+        {
+          border:2px solid #793702;
+
+        }
+        table.table-questions  > tbody > tr > th
+        {
+          border:2px solid #793702;
+
+        }
+        .table-grade
+{
+    width:100%;
+border:3px solid #793702;
+}
+table.table-grade  > tbody > tr
+        {
+        border:2px solid #793702;
+            color:      color:yellowgreen;
+
+        }
+        table.table-grade  > tbody > tr > td
+        {
+        border:2px solid #793702;
+            color:      color:yellowgreen;
+
+        }
+</style>
+<div class="block" style=" background-image: url(Untitled.png); background-size:cover; margin-top:80px;">
+   <div class="row ml-0 mr-0">
+      <div class="col-3" style="height:88vh; text-align:center; border-left:5px solid #793702;">
+        <BR><BR><BR><br><BR><BR>
+        <h2 style="color:#793702; font-weight:bold;">Which Paper ?</h2>
+        <form method=POST action="" name=tbc>
+            {% csrf_token %}
+             <select name="paper" id="paper" required style="font-size:25px;">
+               <option value="none" selected>----</option>
+            {% for x in papers %}
+            <option value="{{x.id}}">{{x.name}}</option>
+            {% endfor %}
+          </select><br><br>
+          <button type="submit" class="btn btn-none b1" >View marks</button>
+      </div></form>
+      <div class="col-9" style=" height:88vh; text-align: center; border-left:5px solid #793702; border-right:5px solid #793702;">
+        <div id=subds>
+          <br><br>
+          <table class="table table-grade table-sm m-auto" style=" color:brown; font-size:17px; font-family:Modern No. 20; font-weight:bold;">
+          
+            <tr>
+                <td>
+                    Code 
+                </td>
+                <td style="color:black">
+                    {{paper.code}}
+                    </td>
+                <td>
+                    Name                   
+                 </td>
+                 <td style="color:black">
+                    {{paper.name}}
+                 </td> 
+            </tr>
+            <tr>
+                <td>
+                    Number of Questions                  
+                 </td>
+                 <td style="color:black">
+                   {{paper.count}} 
+                 </td> 
+               
+                 <td >
+                    Department                
+                 </td>
+                 <td style="color:black">
+                    {{paper.dept.name}}
+                 </td> 
+                </tr> 
+                <tr>
+                <td>
+                    Marks per correct question                   
+                 </td>
+                 <td style="color:black">
+                    {{paper.marks_per_cq}}
+                 </td> <td>
+                    Marks per wrong question                 
+                 </td>
+                 <td  style="color:black">
+                    {{paper.marks_per_wq}}
+                 </td> 
+                </tr>
+            </tr> 
+            <tr>
+            <td>
+                Full Marks                    
+             </td>
+             <td style="color:black">
+                 {{paper.fm}}
+             </td> <td>
+                Modified Full Marks                 
+             </td>
+             <td style="color:black">
+                {{paper.modified_fm}}
+             </td> 
+            </tr>
+            <tr>
+                <td>
+                    Paper Setter                    
+                 </td>
+                 <td colspan=3 style="color:black">
+                    {{paper.paper_setter.name}}
+                 </td> </tr>
+                </table>
+                <br><br>
+           <table  class="table table-questions m-auto">
+      <tr style="color:brown;">
+        <th>Roll</th>
+        <th>Name</th>
+        <th>OM</th>
+        <th>Modified OM</th>
+        <th>Grade</th>
+      </tr>
+      {% for x in marks %}
+      <tr>
+        <td>{{x.student.roll}}</td>
+        <td>{{x.student.name}}</td>
+        <td>{{x.om}}</td>
+        <td>{{x.modified_om}}</td>
+        <td>{{x.grade}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+        </div>
+     </div>
+    </div>
+
+</div>
+
+<!--footer-->
+<style>
+    .b/*footer*/
+    {
+      position:fixed;
+        bottom:0;
+        width:100%;
+        background-color: #793702; color:#fff3e6; 
+    }
+    .footer
+        {
+          width:20%;
+          margin-left:auto;
+        }
+</style>
+<div class="b">
+        <div trademark style="text-align:center;  ">
+          © 2021 ExtraNET.com are registered trademarks of SXC. All rights reserved.
+        </div>
+  </div>
+</div>
+
+
+
+  <body>
+
+
+  <script type='text/javascript'>
+
+		var no=Number(no);
+		var y=document.getElementsByTagName("option")[ document.getElementById("paper").selectedIndex].value;
+		console.log(y);
+		console.log("yoyoy");
+		//document.getElementById("subds").innerHTML="select a paper";
+
+		/*var x='<table border=3><tr> <th>Roll</th> <th>Name</th> <th>OM</th> <th>Modified OM</th> <th>Grade</th> </tr>'+
+             '{% for x in marks %}'+
+              '<tr> <td>{{x.student.roll}}</td> <td>{{x.student.name}}</td> <td>{{x.om}}</td> <td>{{x.modified_om}}</td> <td>{{x.grade}}</td> </tr>'+
+             '{% endfor %}'
+             +' </table>';
+		document.getElementById("subds").innerHTML=x;*/
+
+</script>
+    </body>
+</html>
+
+
+
+<!--<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Which Paper ?</h2>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+      <select name="paper" id="paper" required>
+        {% for x in papers %}
+        <option value="{{x.id}}">{{x.name}}</option>
+        {% endfor %}
+      </select>
+
+      <input type="submit" value="Go" />
+    </form>
+
+  <table border=3>
+      <tr>
+        <th>Roll</th>
+        <th>Name</th>
+        <th>OM</th>
+        <th>Modified OM</th>
+        <th>Grade</th>
+      </tr>
+      {% for x in marks %}
+      <tr>
+        <td>{{x.student.roll}}</td>
+        <td>{{x.student.name}}</td>
+        <td>{{x.om}}</td>
+        <td>{{x.modified_om}}</td>
+        <td>{{x.grade}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

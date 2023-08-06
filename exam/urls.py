@@ -1,0 +1,30 @@
+from django.urls import path
+from .views import *
+urlpatterns = [
+    path('', homepage, name='homepage'),
+    path('create_paper/', create_paper, name='create_paper'),
+    path('give_exam/', give_exam, name='give_exam'),
+    path('login/', login_page, name='login'),
+    path('logout/', logout_user, name='logout'),
+    path('change_password/', change_password, name='change_password'),
+    path('ajax/<str:pk>/', ajax_exam, name='ajax_exam'),
+    path('give_exam/<str:pk>/<str:type1>/', give_exam, name='give_exam'),
+    path('teacher_dashboard/', teacher_dashboard, name='teacher_dashboard'),
+    path('unlock_papers_and_marks/',
+         unlock_papers_and_marks, name='unlock_papers_and_marks'),
+    path('marks_for_teacher/', marks_for_teacher, name='marks_for_teacher'),
+    path('marks_for_student/<str:pk>/',
+         marks_for_student, name='marks_for_student'),
+    path('create_question/<str:pk>/', create_question, name='create_question'),
+    path('update_paper/<str:pk>/', update_paper, name='update_paper'),
+    path('update_question/<str:pk>/', update_question, name='update_question'),
+    path('delete_paper/<str:pk>/', delete_paper, name='delete_paper'),
+    path('delete_question/<str:pk>/', delete_question, name='delete_question'),
+    path('view_question/<str:pk>/', view_question, name='view_question'),
+    path('student_dashboard/', student_dashboard, name='student_dashboard'),
+    path('view_paper_questions/<str:pk>/', view_paper_questions,
+         name='view_paper_questions'),
+    path('papers_and_questions/', papers_and_questions,
+         name='papers_and_questions'),
+
+]
